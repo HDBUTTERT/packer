@@ -128,19 +128,6 @@ build {
     restart_check_command = "powershell -command \"&amp; {Write-Output 'Machine restarted.'}\""
   }
 
-  provisioner "windows-update" {
-    search_criteria = "AutoSelectOnWebSites=0 and IsInstalled=0"
-    filters = [
-      "include:$true"
-    ]
-    update_limit = 25
-  }
-
-  # Restart
-  provisioner "windows-restart" {
-    restart_check_command = "powershell -command \"&amp; {Write-Output 'Machine restarted.'}\""
-  }
-
   #Clean up Image
   provisioner "powershell" {
     inline = [
